@@ -33,10 +33,15 @@ function P = fourBar(LinkLength, AngL1, AngL4, lr, PoI, dt, tMax)
     linkLength=evaluateNumericValues(LinkLength);
    
     
-    % Evaluate the numeric values of the angles of Link 1 and Link4
+    % Evaluate the numeric values of the angles of Link 1 and Link4    
     % from the strings AngL1 and AngL4
+    
+    angl1=evaluateNumericValues(AngL1);
+    angl2=evaluateNumericValues(AngL4);
 
     % Solve the geometry of the mechanism using rotateLink and circleIntersect
+    
+    
 
     % Evaluate PoI and append to the Nx2 matrix P
 
