@@ -37,10 +37,12 @@ function P = fourBar(LinkLength, AngL1, AngL4, lr, PoI, dt, tMax)
     % from the strings AngL1 and AngL4
     
     angl1=evaluateNumericValues(AngL1);
-    angl2=evaluateNumericValues(AngL4);
+    angl4=evaluateNumericValues(AngL4);
 
     % Solve the geometry of the mechanism using rotateLink and circleIntersect
-    
+    L4=calculateConnectedPoints(linkLength(0),angl4);
+    L2=calculateConnectedPoints(linkLength(1),angl1);
+    L3=circleIntersect(L4,linkLength(3),L2,linkLength(2),lr);
     
 
     % Evaluate PoI and append to the Nx2 matrix P
@@ -49,6 +51,12 @@ function P = fourBar(LinkLength, AngL1, AngL4, lr, PoI, dt, tMax)
 
 
   end      % time loop
+end
+%for calculating j2 and j4 connected to j1
+%return P which contains an array which is (x,y)
+function P=calculateConnectedPoints(length,angle)
+P(0)=length*cos(angle);
+P(1)=length*sin(angle);
 end
 function numbers=evaluateNumericValues(string)
 max=size(string);
